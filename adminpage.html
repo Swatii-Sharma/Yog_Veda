@@ -1,0 +1,53 @@
+<?php
+session_start();
+include 'db_connect.php';// Database connection
+
+
+// Fetch total counts
+$totalUsers = mysqli_fetch_assoc(mysqli_query($conn, "SELECT COUNT(*) as count FROM users"))['count'];
+$totalProducts = mysqli_fetch_assoc(mysqli_query($conn, "SELECT COUNT(*) as count FROM products"))['count'];
+$totalOrders = mysqli_fetch_assoc(mysqli_query($conn, "SELECT COUNT(*) as count FROM orders"))['count'];
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="admin_dashboard.css">
+    <title>Admin Dashboard</title>
+</head>
+<body>
+
+    <div class="nav">
+        <h2>Admin Dashboard</h2>
+        <a class="logout" href="logout.php">Logout</a>
+    </div>
+
+    <div class="container">
+        <div class="card">
+            <h3>Total Users</h3>
+            <p><?= $totalUsers; ?></p>
+        </div>
+        <div class="card">
+            <h3>Total Products</h3>
+            <p><?= $totalProducts; ?></p>
+        </div>
+        <div class="card">
+            <h3>Total Orders</h3>
+            <p><?= $totalOrders; ?></p>
+        </div>
+    </div>
+
+    <div class="container">
+        <h2>Manage</h2>
+        <ul>
+            <li><a href="manage_user.php">Manage Users</a></li>
+            <li><a href="manage_products.php">Manage Products</a></li>
+            <li><a href="manage_orders.php">Manage Orders</a></li>
+        </ul>
+    </div>
+
+</body>
+</html>
+

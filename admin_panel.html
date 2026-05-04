@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Panel - YOGAVEDA</title>
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(to bottom right, #cbd5e1, #2bb3b1);
+    height: 100vh;
+}
+
+/* Navbar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 40px;
+}
+
+.logo {
+    font-size: 26px;
+    font-weight: bold;
+    color: #0ea5a4;
+}
+
+.navbar a {
+    text-decoration: none;
+    color: black;
+    font-size: 14px;
+}
+
+/* Panel Card */
+.panel-container {
+    width: 420px;
+    margin: 0 auto;
+    background: #e2e8f0;
+    padding: 40px;
+    border-radius: 14px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* Title */
+.panel-container h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #0f172a;
+}
+
+/* Buttons */
+.panel-btn {
+    width: 100%;
+    padding: 14px;
+    margin-bottom: 15px;
+    border: none;
+    border-radius: 8px;
+    font-size: 15px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+/* Photo Button */
+.btn-photo {
+    background: #334155;
+    color: white;
+}
+
+.btn-photo:hover {
+    background: #334155;
+}
+
+/* Video Button */
+.btn-video {
+    background: #334155;
+    color: white;
+}
+
+.btn-video:hover {
+    background: #334155;
+}
+</style>
+</head>
+
+<body>
+
+<!-- Navbar -->
+<div class="navbar">
+    <div class="logo">
+        <i class="fas fa-spa"></i> YOGAVEDA
+    </div>
+    <a href="#">Logout</a>
+</div>
+
+<!-- Admin Panel -->
+<div class="panel-container">
+    <h2>Admin Panel</h2>
+
+    <button class="panel-btn btn-photo">
+     Upload Photo
+    </button>
+
+    <button class="panel-btn btn-video">
+         Upload Video
+    </button>
+
+    <button class="panel-btn btn-video">
+        Upload Song
+    </button>
+
+    <a href="admin_meeting.html">
+    <button class="panel-btn btn-video">
+         Upload Meeting
+    </button>
+    </a>
+    
+    <button class="panel-btn btn-video">
+       Upload Cloth
+    </button>
+
+    <button class="panel-btn btn-video">
+        Upload Mat
+    </button>
+</div>
+
+</body>
+</html>

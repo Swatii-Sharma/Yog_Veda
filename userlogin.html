@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YOGAVEDA</title>
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/animate/animate.min.css" rel="stylesheet">
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<style>
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(to bottom right, #dbeafe, #38b2ac);
+    height: 100vh;
+}
+
+/* Navbar */
+.navbar {
+    background: transparent;
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.navbar h2 {
+    color: #0ea5a4;
+    font-weight: bold;
+}
+
+.navbar a {
+    text-decoration: none;
+    color: black;
+}
+
+/* Form Box */
+.form-container {
+    width: 400px;
+    margin: 5px auto;
+    background: #f1f5f9;
+    padding: 35px;
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+/* Header */
+.header h2 {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+/* Inputs */
+label {
+    margin-top: 10px;
+}
+
+input {
+    width: 100%;
+    padding: 12px;
+    margin-top: 8px;
+    border-radius: 8px;
+    border: none;
+    background: #e2e8f0;
+}
+
+/* Button */
+button {
+    background: #06BBCC;
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 8px;
+    margin-top: 20px;
+    width: 100%;
+}
+
+button:hover {
+    background: #0d9488;
+}
+
+/* Toggle text */
+.extra-text {
+    text-align: center;
+    margin-top: 15px;
+}
+
+.extra-text a {
+    color: #0dafaf;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+/* Error */
+#error-msg {
+    color: red;
+    text-align: center;
+    margin-top: 10px;
+}
+
+/* Hide forms */
+.hidden {
+    display: none;
+}
+</style>
+
+
+<body>
+
+<!-- Navbar -->
+<nav class="navbar">
+    <h2><i class="fas fa-spa"></i> YOGAVEDA</h2>
+    <a href="home.html">Back to Home</a>
+</nav>
+
+<!-- LOGIN FORM -->
+<div class="form-container" id="loginBox">
+
+    <div class="header">
+        <h2>User Login</h2>
+    </div>
+
+    <form id="loginForm">
+        <label>Email</label>
+        <input type="email" id="loginEmail" required>
+
+        <label>Password</label>
+        <input type="password" id="loginPassword" required>
+        
+    
+        <button type="submit">Sign In</button>
+      
+
+        <p id="loginError"></p>
+
+        <div class="extra-text">
+            Don't have an account?
+            <a onclick="showRegister()">Register here</a>
+        </div>
+    </form>
+
+</div>
+
+<!-- REGISTER FORM -->
+<div class="form-container hidden" id="registerBox">
+
+    <div class="header">
+        <h2>Create Account</h2>
+    </div>
+
+    <form id="registerForm">
+        <label>Full Name</label>
+        <input type="text" id="name" required>
+
+        <label>Email</label>
+        <input type="email" id="regEmail" required>
+
+        <label>Password</label>
+        <input type="password" id="regPassword" required>
+
+        <label>Confirm Password</label>
+        <input type="password" id="confirmPassword" required>
+
+        <button type="submit">Register</button>
+
+        <p id="registerError"></p>
+
+        <div class="extra-text">
+            Already have an account?
+            <a onclick="showLogin()">Login here</a>
+        </div>
+    </form>
+
+</div>
+
+<script>
+// Toggle Forms
+function showRegister() {
+    document.getElementById("loginBox").classList.add("hidden");
+    document.getElementById("registerBox").classList.remove("hidden");
+}
+
+function showLogin() {
+    document.getElementById("registerBox").classList.add("hidden");
+    document.getElementById("loginBox").classList.remove("hidden");
+}
+
+// Login Logic
+document.getElementById("loginForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    let email = document.getElementById("loginEmail").value;
+    let password = document.getElementById("loginPassword").value;
+    let error = document.getElementById("loginError");
+
+    if (email === "user@gmail.com" && password === "123") {
+        // Save login state
+        localStorage.setItem("isUserLoggedIn", "true");
+
+        alert("Login Successful!");
+
+        // ✅ Redirect to index page
+        window.location.href = "index.html";
+    } else {
+        error.innerText = "Invalid Email or Password!";
+    }
+});
+// Register Logic
+document.getElementById("registerForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    let pass = document.getElementById("regPassword").value;
+    let confirm = document.getElementById("confirmPassword").value;
+    let error = document.getElementById("registerError");
+
+    if (pass !== confirm) {
+        error.innerText = "Passwords do not match!";
+        return;
+    }
+
+    alert("Registration Successful!");
+    showLogin();
+});
+</script>
+
+</body>
+</html>
