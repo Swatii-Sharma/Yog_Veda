@@ -18,7 +18,8 @@ A simple and responsive yoga website built for promoting wellness, poses, and he
 * HTML
 * CSS
 * JavaScript
-
+* PhP
+  
 ## 📌 How to Run Locally
 
 ```bash
